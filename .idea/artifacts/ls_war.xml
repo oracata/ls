@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ls:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ls</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ls.war">
+      <element id="artifact" artifact-name="ls:war exploded" />
+    </root>
+  </artifact>
+</component>

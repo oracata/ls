@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置参数来自Configuration（mybatis）类 -->
+    <settings>
+        <setting name="safeRowBoundsEnabled" value="true"/>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="useGeneratedKeys" value="true" />
+    </settings>
+
+    <!-- 别名 -->
+    <!--<typeAliases>-->
+        <!--&lt;!&ndash;<typeAlias type="com.ls.model.xxx" alias="aa" />&ndash;&gt;-->
+    <!--</typeAliases>-->
+
+    <!--<plugins>-->
+        <!--&lt;!&ndash; interceptor mybatis监听 在sql执行前后做事情 &ndash;&gt;-->
+        <!--&lt;!&ndash; 监控sql &ndash;&gt;-->
+        <!--<plugin interceptor=""></plugin>-->
+    <!--</plugins>-->
+
+    <!-- 枚举用到 -->
+    <!--<typeHandlers>-->
+        <!--<typeHandler handler=""-->
+    <!--</typeHandlers>-->
+</configuration>
