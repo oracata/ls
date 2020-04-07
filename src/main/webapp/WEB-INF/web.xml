@@ -27,7 +27,6 @@
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
-    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
   <!-- / 与 /* 的区别 -->
@@ -91,8 +90,11 @@
   </filter>
   <filter-mapping>
     <filter-name>loginFilter</filter-name>
+
     <url-pattern>/sys/*</url-pattern>
     <url-pattern>/admin/*</url-pattern>
+
+
   </filter-mapping>
 
 
@@ -115,8 +117,8 @@
   </filter-mapping>
 
   <welcome-file-list>
-    <!--  <welcome-file>index.jsp</welcome-file> -->
-    <welcome-file>signin.jsp</welcome-file>
+     <welcome-file>index.jsp</welcome-file>
+
   </welcome-file-list>
 
 </web-app>
