@@ -42,7 +42,7 @@ public class UserController {
 
         SysUser sysUser = sysUserService.findByKeyWord(username);
         //登录失败的提示信息
-        String errorMsg = "登记失败";
+        String errorMsg = "登录失败";
         //
         String ret = request.getParameter("ret");
 

@@ -20,6 +20,7 @@ import com.ls.model.SysUser;
 import com.ls.param.UserParam;
 import com.ls.service.SysUserService;
 import com.ls.util.BeanValidator;
+import com.ls.util.DynamicDataSourceHolder;
 import com.ls.util.MD5Util;
 import com.ls.util.PassWordUtil;
 import org.slf4j.Logger;
@@ -82,6 +83,7 @@ public class SysUserServiceIpml implements SysUserService{
      * @return
      */
     public SysUser findByKeyWord(String keyword) {
+        DynamicDataSourceHolder.setDataSource("mysql");
         return sysUserMapper.findByKeyword(keyword);
     }
 

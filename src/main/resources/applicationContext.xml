@@ -18,7 +18,7 @@
     <import resource="redis.xml" />
 
     <!-- 数据库参数配置 -->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="${db.driverClassName}" />
         <property name="url" value="${db.url}" />
         <property name="username" value="${db.username}" />
@@ -30,12 +30,64 @@
         <property name="filters" value="stat,wall" />
     </bean>
 
+
+    <!-- 数据库参数配置 -->
+    <bean id="dataSource2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${db.driverClassName2}" />
+        <property name="url" value="${db.url2}" />
+        <property name="username" value="${db.username2}" />
+        <property name="password" value="${db.password2}" />
+        <property name="initialSize" value="3" />
+        <property name="minIdle" value="3" /><!-- 空余数量 -->
+        <property name="maxActive" value="20" /><!-- 最大连接数 -->
+        <property name="maxWait" value="60000" /><!-- 超时等待时间 -->
+        <property name="filters" value="stat,wall" />
+    </bean>
+
+
+
+    <bean id="dynamicDataSource" class="com.ls.util.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <!-- 指定lookupKey和与之对应的数据源 -->
+                <entry key="mysql" value-ref="dataSource1"></entry>
+                <entry key="sqlserver" value-ref="dataSource2"></entry>
+
+            </map>
+        </property>
+        <!-- 这里可以指定默认的数据源 -->
+        <property name="defaultTargetDataSource" ref="dataSource1" />
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dynamicDataSource" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
+        <!-- 插件 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
     <!--  配置xml文件位置，以及数据库  -->
+    <!--
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
         <property name="configLocation" value="classpath:mybatis-config.xml" />
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource1" />
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
     </bean>
+    -->
+
+
+
 
     <!-- mybatis 扫描配置器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -45,7 +97,7 @@
 
     <!-- tx 事务管理-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource1" />
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager" />
