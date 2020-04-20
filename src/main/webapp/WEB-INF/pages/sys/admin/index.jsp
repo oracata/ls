@@ -1,6 +1,10 @@
 <%--<%@ page import="com.ls.common.RequestHolder" %>--%>
 <%@ page import="com.ls.model.SysUser" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +35,7 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <span class="user-info">
                             <small>欢迎,</small>
-                            Admin
+                   <lable name="deptid" value="${user.deptId}">${user.deptId}</lable>
                         </span>
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>

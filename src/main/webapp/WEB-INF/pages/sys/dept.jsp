@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>单位管理</title>
+    <title>部门管理</title>
     <jsp:include page="/common/backend_common.jsp" />
     <jsp:include page="/common/page.jsp" />
 </head>
@@ -27,7 +27,7 @@
 <div class="main-content-inner">
     <div class="col-sm-3">
         <div class="table-header">
-            单位列表&nbsp;&nbsp;
+            部门列表&nbsp;&nbsp;
             <a class="green" href="#">
                 <i class="ace-icon fa fa-plus-circle orange bigger-130 dept-add"></i>
             </a>
