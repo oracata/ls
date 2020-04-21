@@ -58,14 +58,14 @@ public class SysRoleController {
         return new ModelAndView("role");
     }
 
-    @RequestMapping("/save.do")
+    @RequestMapping("/save.php")
     @ResponseBody
     private JsonData save(RoleParam param){
         sysRoleService.save(param);
         return JsonData.success();
     }
 
-    @RequestMapping("/update.do")
+    @RequestMapping("/update.php")
     @ResponseBody
     private JsonData update(RoleParam param){
         sysRoleService.update(param);
@@ -79,21 +79,21 @@ public class SysRoleController {
         return new ModelAndView("active/active");
     }
 
-    @RequestMapping("/list.do")
+    @RequestMapping("/list.php")
     @ResponseBody
     private JsonData list(RoleParam param){
         List<SysRole> roleList = sysRoleService.getAll();
         return JsonData.success(roleList);
     }
 
-    @RequestMapping("roleTree.do")
+    @RequestMapping("roleTree.php")
     @ResponseBody
     public JsonData roleTree(@RequestParam("roleId") int roleId){
         List<AclModuleLevelDto> aclModuleLevelDtos = sysTreeService.roleTree(roleId);
        return JsonData.success(aclModuleLevelDtos);
     }
 
-    @RequestMapping("changeAcls.do")
+    @RequestMapping("changeAcls.php")
     @ResponseBody
     public JsonData changeAcls(@RequestParam("roleId") int roleId,@RequestParam("aclIds") String aclIds){
         List<Integer> aclIdList = StringUtil.splitToListInt(aclIds);
@@ -101,7 +101,7 @@ public class SysRoleController {
         return JsonData.success();
     }
 
-    @RequestMapping("users.do")
+    @RequestMapping("users.php")
     @ResponseBody
     public JsonData users(@RequestParam("roleId") int roleId){
         List<SysUser> seclestdUserList = sysRoleUserService.getListByRoleId(roleId);
@@ -126,7 +126,7 @@ public class SysRoleController {
         return JsonData.success(map);
     }
 
-    @RequestMapping("changeUsers.do")
+    @RequestMapping("changeUsers.php")
     @ResponseBody
     public JsonData changeUsers(@RequestParam("roleId") int roleId,@RequestParam(value = "userIds", required = false,defaultValue = "") String userIds){
         List<Integer> aclIdList = StringUtil.splitToListInt(userIds);

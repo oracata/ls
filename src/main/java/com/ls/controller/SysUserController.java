@@ -25,21 +25,21 @@ public class SysUserController {
     @Resource
     private SysUserService sysUserService;
 
-    @RequestMapping("/save.do")
+    @RequestMapping("/save.php")
     @ResponseBody
     public JsonData saveUser(UserParam userParam){
     sysUserService.save(userParam);
         return JsonData.success();
     }
 
-    @RequestMapping("/update.do")
+    @RequestMapping("/update.php")
     @ResponseBody
     public JsonData updateUser(UserParam userParam){
         sysUserService.update(userParam);
         return JsonData.success();
     }
 
-    @RequestMapping("/page.do")
+    @RequestMapping("/page.php")
     @ResponseBody
     public JsonData page(@RequestParam("deptId") Integer deptId, PageQuery pageQuery){
         PageResult result = sysUserService.getPageByDeptId(deptId,pageQuery);
