@@ -58,35 +58,42 @@ public class SysRoleController {
         return new ModelAndView("role");
     }
 
-    @RequestMapping("/save.php")
+    @RequestMapping("/save.do")
     @ResponseBody
     private JsonData save(RoleParam param){
         sysRoleService.save(param);
         return JsonData.success();
     }
 
-    @RequestMapping("/update.php")
+    @RequestMapping("/update.do")
     @ResponseBody
     private JsonData update(RoleParam param){
         sysRoleService.update(param);
         return JsonData.success();
     }
 
-    @RequestMapping("/list.php")
+
+    @RequestMapping("/test.do")
+    @ResponseBody
+    private ModelAndView test(){
+        return new ModelAndView("active/active");
+    }
+
+    @RequestMapping("/list.do")
     @ResponseBody
     private JsonData list(RoleParam param){
         List<SysRole> roleList = sysRoleService.getAll();
         return JsonData.success(roleList);
     }
 
-    @RequestMapping("roleTree.php")
+    @RequestMapping("roleTree.do")
     @ResponseBody
     public JsonData roleTree(@RequestParam("roleId") int roleId){
         List<AclModuleLevelDto> aclModuleLevelDtos = sysTreeService.roleTree(roleId);
        return JsonData.success(aclModuleLevelDtos);
     }
 
-    @RequestMapping("changeAcls.php")
+    @RequestMapping("changeAcls.do")
     @ResponseBody
     public JsonData changeAcls(@RequestParam("roleId") int roleId,@RequestParam("aclIds") String aclIds){
         List<Integer> aclIdList = StringUtil.splitToListInt(aclIds);
@@ -94,7 +101,7 @@ public class SysRoleController {
         return JsonData.success();
     }
 
-    @RequestMapping("users.php")
+    @RequestMapping("users.do")
     @ResponseBody
     public JsonData users(@RequestParam("roleId") int roleId){
         List<SysUser> seclestdUserList = sysRoleUserService.getListByRoleId(roleId);
@@ -119,7 +126,7 @@ public class SysRoleController {
         return JsonData.success(map);
     }
 
-    @RequestMapping("changeUsers.php")
+    @RequestMapping("changeUsers.do")
     @ResponseBody
     public JsonData changeUsers(@RequestParam("roleId") int roleId,@RequestParam(value = "userIds", required = false,defaultValue = "") String userIds){
         List<Integer> aclIdList = StringUtil.splitToListInt(userIds);

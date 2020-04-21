@@ -35,7 +35,7 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <span class="user-info">
                             <small>欢迎,</small>
-                   <lable name="deptid" value="${user.deptId}">${user.deptId}</lable>
+                   <lable name="deptId" value="${user.deptId}">${user.deptId}</lable>
                         </span>
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
@@ -85,7 +85,7 @@
 
         <ul class="nav nav-list">
             <li class="active">
-                <a class="popstyle" href="/sys/user/page.do" target="_blank">
+                <a class="popstyle" href="/sys/user/page.do?deptId=${user.deptId}" target="_blank">
                     <i class="menu-icon fa fa-tachometer"></i>
                     <span class="menu-text"> 首页 </span>
                 </a>
@@ -129,6 +129,18 @@
                         </a>
                         <b class="arrow"></b>
                     </li>
+
+
+                    <li class="">
+                        <a class="popstyle" href="/sys/role/test.do" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            test
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+
+
+
                 </ul>
             </li>
 
