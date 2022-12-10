@@ -11,7 +11,7 @@
 
   <!-- 配置参数-->
   <properties>
-    <springframework.version>4.3.12.RELEASE</springframework.version>
+    <springframework.version>6.0.0</springframework.version>
   </properties>
 
   <dependencies>
